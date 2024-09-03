@@ -3,8 +3,8 @@
 
 #include "pilha.h"
 
+void limparTela();
 void menu();
-
 void exibirPilha();
 
 #endif

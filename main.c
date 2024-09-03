@@ -3,10 +3,6 @@
 #include "menu.h"
 #include "empilhadeira.h"
 
-void limparTela() {
-    system("clear");
-}
-
 int main() {
     Pilha pilhaA, pilhaB, pilhaC;
     inicializarPilha(&pilhaA);
@@ -22,49 +18,56 @@ int main() {
         limparTela();
 
         switch (opcao) {
-        case 1:
-            printf("==============\n");
-            printf("Inserir Caixa\n");
-            printf("==============\n");
-            printf("ID: ");
-            scanf("%d", &caixa.id);
-            printf("Peso: ");
-            scanf("%d", &caixa.peso);
-            printf("Descrição: ");
-            scanf(" %[^\n]", caixa.descricao);
-            inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa);
-            limparTela();
-            break;
-        case 2:
-            printf("===============\n");
-            printf("Consultar Caixa\n");
-            printf("===============\n");
-            printf("ID: ");
-            scanf("%d", &id);
-            consultarCaixa(&pilhaA, id);
-            break;
-        case 3:
-            printf("==============\n");
-            printf("Remover Caixa\n");
-            printf("==============\n");
-            printf("ID: ");
-            scanf("%d", &id);
-            removerCaixa(&pilhaA, &pilhaB, &pilhaC, id);
-            break;
-        case 4:
-            printf("==============\n");
-            printf("Exibir Pilha\n");
-            printf("==============\n");
-            exibirPilha(&pilhaA);
-            break;
-        case 5:
-            printf("Saindo...\n");
-            break;
-        default:
-            printf("Opção inválida. Tente novamente.\n");
-            break;
+            case 1:
+                printf("===================================\n");
+                printf("        Inserir Nova Caixa         \n");
+                printf("===================================\n");
+                printf("Digite o ID da caixa: ");
+                scanf("%d", &caixa.id);
+                printf("Digite o peso da caixa (em toneladas): ");
+                scanf("%d", &caixa.peso);
+                printf("Digite a descrição da caixa: ");
+                scanf(" %[^\n]", caixa.descricao);
+                inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa);
+                printf("\nCaixa inserida com sucesso!\n");
+                limparTela();
+                break;
+                
+            case 2:
+                printf("===================================\n");
+                printf("          Consultar Caixa          \n");
+                printf("===================================\n");
+                printf("Digite o ID da caixa para consulta: ");
+                scanf("%d", &id);
+                consultarCaixa(&pilhaA, id);
+                break;
+
+            case 3:
+                printf("===================================\n");
+                printf("          Remover Caixa            \n");
+                printf("===================================\n");
+                printf("Digite o ID da caixa para remoção: ");
+                scanf("%d", &id);
+                removerCaixa(&pilhaA, &pilhaB, &pilhaC, id);
+                printf("\nCaixa removida com sucesso!\n");
+                break;
+
+            case 4:
+                printf("===================================\n");
+                printf("           Exibir Pilha            \n");
+                printf("===================================\n");
+                exibirPilha(&pilhaA);
+                break;
+
+            case 5:
+                printf("Saindo do sistema...\n");
+                break;
+
+            default:
+                printf("Opção inválida! Por favor, tente novamente.\n");
+                break;
         }
     } while (opcao != 5);
-    
+
     return 0;
 }
