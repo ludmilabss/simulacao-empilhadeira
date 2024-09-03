@@ -1,6 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "menu.h"
 #include "empilhadeira.h"
+
+void limparTela() {
+    system("clear");
+}
 
 int main() {
     Pilha pilhaA, pilhaB, pilhaC;
@@ -14,6 +19,7 @@ int main() {
     do {
         menu();
         scanf("%d", &opcao);
+        limparTela();
 
         switch (opcao) {
         case 1:
@@ -27,6 +33,7 @@ int main() {
             printf("Descrição: ");
             scanf(" %[^\n]", caixa.descricao);
             inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa);
+            limparTela();
             break;
         case 2:
             printf("===============\n");
