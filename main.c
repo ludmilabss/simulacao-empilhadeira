@@ -63,15 +63,19 @@ void exibirCaixa(Caixa caixa) {
 void moverCaixa(Pilha *origem, Pilha *destino) {
     Caixa caixa = desempilhar(origem);
     if (caixa.id != -1) {
-        if (!empilhar(destino, caixa)) {
-            empilhar(origem, caixa); // Reverte se a inserção falhar
-        }
+        empilhar(destino, caixa);
     }
 }
 
 void inserirCaixa(Pilha *pilhaA, Pilha *pilhaB, Pilha *pilhaC, Caixa caixa) {
-    if (!empilhar(pilhaA, caixa)) {
-        printf("Erro ao inserir caixa.\n");
+    // Primeiro, vamos desempilhar as caixas até encontrar uma posição válida
+    while (pilhaA->topo != -1 && pilhaA->caixas[pilhaA->topo].peso < caixa.peso) {
+        moverCaixa(pilhaA, pilhaB);
+    }
+    empilhar(pilhaA, caixa);
+    // Depois, colocamos de volta as caixas na pilha A
+    while (pilhaB->topo != -1) {
+        moverCaixa(pilhaB, pilhaA);
     }
 }
 
@@ -116,9 +120,9 @@ int main() {
     Caixa caixa2 = {2, 5, "Caixa de 5 toneladas"};
     Caixa caixa3 = {3, 7, "Caixa de 7 toneladas"};
 
-    inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa1);
-    inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa2);
     inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa3);
+    inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa2);
+    inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa1);
 
     // Exemplo de consulta de caixa
     consultarCaixa(&pilhaA, 2);
