@@ -22,8 +22,8 @@ int main() {
                 printf("===================================\n");
                 printf("        Inserir Nova Caixa         \n");
                 printf("===================================\n");
-                printf("Digite o ID da caixa: ");
-                scanf("%d", &caixa.id);
+                caixa.id = rand() % 10000 + 1;  // Generate random ID between 1 and 10000
+                printf("ID gerado para a caixa: %d\n", caixa.id);
                 printf("Digite o peso da caixa (em toneladas): ");
                 scanf("%d", &caixa.peso);
                 printf("Digite a descrição da caixa: ");
