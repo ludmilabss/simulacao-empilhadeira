@@ -53,7 +53,7 @@ No projeto, foi utilizada principalmente a estruturas de dados: **pilhas**.
 ### Pré-requisitos
 
 - GCC (GNU Compiler Collection)
-- IDE escolhida
+- IDE de preferência (VSCode, Clion...)
 
 ### Passos para Compilar e Executar
 
@@ -70,8 +70,8 @@ No projeto, foi utilizada principalmente a estruturas de dados: **pilhas**.
    gcc src/cli/main.c src/app/pilha.c src/app/empilhadeira.c src/cli/menu.c -I include -o empilhadeira
    ```
 
-3. **Rodar o sistema:**
+3. **Rodar o executável:**
 
    ```bash
    ./empilhadeira
-   ```
+  
