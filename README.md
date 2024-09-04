@@ -67,11 +67,11 @@ No projeto, foi utilizada principalmente a estruturas de dados: **pilhas**.
 2. **Compilação:**
 
    ```bash
-   
+   gcc src/cli/main.c src/app/pilha.c src/app/empilhadeira.c src/cli/menu.c -I include -o empilhadeira
    ```
 
 3. **Rodar o sistema:**
 
    ```bash
-   
+   ./empilhadeira
    ```
