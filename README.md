@@ -74,4 +74,4 @@ No projeto, foi utilizada principalmente a estruturas de dados: **pilhas**.
 
    ```bash
    ./empilhadeira
-   ```
+  

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "menu.h"
-#include "empilhadeira.h"
+#include "../include/menu.h"
+#include "../include/empilhadeira.h"
 
 int main() {
     Pilha pilhaA, pilhaB, pilhaC;
