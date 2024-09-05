@@ -29,7 +29,7 @@ int main() {
                 caixa.id = rand() % 10000 + 1;  // Generate random ID between 1 and 10000
                 printf("ID gerado para a caixa: %d\n", caixa.id);
                 do {
-                    printf("Digite o peso da caixa : ");
+                    printf("Digite o peso da caixa (em toneladas): ");
                 if (scanf("%d", &caixa.peso) != 1 || !validarInteiro(caixa.peso)) {
                     printf("Idade inválida. Por favor, digite um peso válido.\n");
                     while (getchar() != '\n');
@@ -38,21 +38,21 @@ int main() {
                 printf("Digite a descrição da caixa: ");
                 scanf(" %[^\n]", caixa.descricao);
                 inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa);
-                printf("\nCaixa inserida com sucesso!\n");
                 limparTela();
+                printf("\nCaixa inserida com sucesso!\n\n");
                 break;
                 
             case 2:
                 printf("===================================\n");
                 printf("          Consultar Caixa          \n");
                 printf("===================================\n");
-                printf("Digite o ID da caixa para consulta: ");
                 do {
-                    printf("Digite o peso da caixa : ");
-                if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
-                    printf("ID inválido. Por favor, digite um ID válido.\n");
-                    while (getchar() != '\n');
-        } }while (!validarInteiro(id));
+                    printf("Digite o ID da caixa: ");
+                    if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
+                        printf("ID inválido. Por favor, digite um ID válido.\n");
+                        while (getchar() != '\n');
+                    } 
+                }while (!validarInteiro(id));
                 consultarCaixa(&pilhaA, id);
                 break;
 
@@ -60,7 +60,6 @@ int main() {
                 printf("===================================\n");
                 printf("          Remover Caixa            \n");
                 printf("===================================\n");
-                printf("Digite o ID da caixa para remoção: ");
                 do {
                     printf("Digite o peso da caixa : ");
                 if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
@@ -68,6 +67,7 @@ int main() {
                     while (getchar() != '\n');
                 } }while (!validarInteiro(id));
                 removerCaixa(&pilhaA, &pilhaB, &pilhaC, id);
+                limparTela();
                 printf("\nCaixa removida com sucesso!\n");
                 break;
 
