@@ -3,6 +3,10 @@
 #include "../include/menu.h"
 #include "../include/empilhadeira.h"
 
+int validarInteiro(int inteiro) {
+    return inteiro > 0 && inteiro <=1000;
+}
+
 int main() {
     Pilha pilhaA, pilhaB, pilhaC;
     inicializarPilha(&pilhaA);
@@ -25,7 +29,13 @@ int main() {
                 caixa.id = rand() % 10000 + 1;  // Generate random ID between 1 and 10000
                 printf("ID gerado para a caixa: %d\n", caixa.id);
                 printf("Digite o peso da caixa (em toneladas): ");
-                scanf("%d", &caixa.peso);
+                do {
+                    printf("Digite o peso da caixa : ");
+                if (scanf("%d", &caixa.peso) != 1 || !validarInteiro(caixa.peso)) {
+                    printf("Idade inválida. Por favor, digite um peso válido.\n");
+                    while (getchar() != '\n');
+        } 
+    }while (!validarInteiro(caixa.peso));
                 printf("Digite a descrição da caixa: ");
                 scanf(" %[^\n]", caixa.descricao);
                 inserirCaixa(&pilhaA, &pilhaB, &pilhaC, caixa);
