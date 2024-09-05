@@ -62,7 +62,12 @@ int main() {
                 printf("          Remover Caixa            \n");
                 printf("===================================\n");
                 printf("Digite o ID da caixa para remoção: ");
-                scanf("%d", &id);
+                do {
+                    printf("Digite o peso da caixa : ");
+                if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
+                    printf("ID inválido. Por favor, digite um ID válido.\n");
+                    while (getchar() != '\n');
+                } }while (!validarInteiro(id));
                 removerCaixa(&pilhaA, &pilhaB, &pilhaC, id);
                 printf("\nCaixa removida com sucesso!\n");
                 break;
