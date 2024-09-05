@@ -48,7 +48,12 @@ int main() {
                 printf("          Consultar Caixa          \n");
                 printf("===================================\n");
                 printf("Digite o ID da caixa para consulta: ");
-                scanf("%d", &id);
+                do {
+                    printf("Digite o peso da caixa : ");
+                if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
+                    printf("ID inválido. Por favor, digite um ID válido.\n");
+                    while (getchar() != '\n');
+        } }while (!validarInteiro(id));
                 consultarCaixa(&pilhaA, id);
                 break;
 
