@@ -34,7 +34,7 @@ int main() {
                         printf("Peso inválido. Por favor, digite um peso válido.\n");
                         while (getchar() != '\n');
                     }
-                } while (!validarInteiro(caixa.peso));
+                } while (!validarInteiro(caixa.peso) || caixa.peso != 3 || caixa.peso != 5 || caixa.peso != 7 );
                 
                 printf("Digite a descrição da caixa: ");
                 scanf(" %[^\n]", caixa.descricao);
