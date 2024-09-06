@@ -24,7 +24,17 @@ Professora: Cledja Rolim
 
 ### Diretórios e sub-diretórios
 
+- **`include`**: Diretório que contém arquivos de cabeçalho para uso em outros arquivos-fonte;
+- **`src`**: Diretório que contém os arquivos-fonte do projeto;
+- **`cli`**: Sub-diretório que contém arquivos com a interface de linha de comando da aplicação. Incluindo comandos que o usuário pode executar pelo terminal ou console e que controlará a aplicação;
+- **`services`**: Sub-diretório que contém arquivos com a lógica do sistema e as principais funcionalidades, essa camada vai interagir com todas as outras.
+
 ### Principais arquivos do projeto
+
+- **`main.c`**: Arquivo principal do projeto, responsável por iniciar a aplicação;
+- **`empilhadeira.c`**: Contém as funções principais para inserir, consultar, editar e remover caixas nas pilhas;
+- **`pilha.c`**: Implementa a estrutura de dados das pilhas;
+- **`menu.c.c`**: Implementa o menu interativo para o usuário.
 
 ## Estrutura de Dados
 
