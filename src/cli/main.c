@@ -54,9 +54,10 @@ int main() {
                         while (getchar() != '\n');  // Limpa o buffer de entrada
                     }
                 } while (!validarInteiro(id));
-
+                limparTela();
                 // Verifica nas três pilhas
                 consultarCaixa(&pilhaA, &pilhaB, &pilhaC, id);
+                printf("\n");
                 break;
 
 
@@ -72,8 +73,7 @@ int main() {
                     }
                 } while (!validarInteiro(id));
                 removerCaixa(&pilhaA, &pilhaB, &pilhaC, id);
-                limparTela();
-                printf("\nCaixa removida com sucesso!\n");
+                printf("\nCaixa removida com sucesso!\n\n");
                 break;
 
             case 4:
@@ -81,6 +81,7 @@ int main() {
                 printf("           Exibir Pilha            \n");
                 printf("===================================\n");
                 exibirPilha(&pilhaA);
+                printf("\n");
                 break;
 
             case 5:
