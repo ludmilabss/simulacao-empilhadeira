@@ -44,19 +44,24 @@ int main() {
                 printf("\nCaixa inserida com sucesso!\n\n");
                 break;
 
-            case 2:
+           case 2:
                 printf("===================================\n");
                 printf("          Consultar Caixa          \n");
                 printf("===================================\n");
                 do {
                     printf("Digite o ID da caixa: ");
-                    if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
+                    if (scanf("%d", &id) != 1) {
+                        while (getchar() != '\n');  // Limpa o buffer de entrada
+                        printf("ID inválido. Por favor, digite um ID válido.\n");
+                        id = -1;  // Define um valor inválido para continuar o loop
+                    } else if (!validarInteiro(id)) {
                         printf("ID inválido. Por favor, digite um ID válido.\n");
                         while (getchar() != '\n');  // Limpa o buffer de entrada
+                    } else {
+                        break;  // Sai do loop se a entrada for válida
                     }
-                } while (!validarInteiro(id));
+                } while (1);
                 limparTela();
-                // Verifica nas três pilhas
                 consultarCaixa(&pilhaA, &pilhaB, &pilhaC, id);
                 printf("\n");
                 break;
