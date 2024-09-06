@@ -29,7 +29,7 @@ int main() {
                 caixa.id = rand() % 1000 + 1;  // Gera ID aleatório entre 1 e 1000
                 printf("ID gerado para a caixa: %d\n", caixa.id);
                 do {
-                    printf("Digite o peso da caixa (em toneladas): ");
+                    printf("Digite o peso da caixa (3, 5 ou 7 toneladas): ");
                     if (scanf("%d", &caixa.peso) != 1 || !validarInteiro(caixa.peso)) {
                         printf("Peso inválido. Por favor, digite um peso válido.\n");
                         while (getchar() != '\n');
