@@ -46,6 +46,7 @@ void removerCaixa(Pilha *pilhaA, Pilha *pilhaB, Pilha *pilhaC, int id) {
         Caixa caixaRemovida = desempilhar(pilhaA);
         printf("\n");
         exibirCaixa(caixaRemovida);
+        printf("\nCaixa removida com sucesso!\n\n");
 
         // Mover as caixas da pilha B de volta para a pilha A
         while (pilhaB->topo > 0) {

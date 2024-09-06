@@ -73,7 +73,6 @@ int main() {
                     }
                 } while (!validarInteiro(id));
                 removerCaixa(&pilhaA, &pilhaB, &pilhaC, id);
-                printf("\nCaixa removida com sucesso!\n\n");
                 break;
 
             case 4:
