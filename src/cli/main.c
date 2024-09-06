@@ -30,7 +30,7 @@ int main() {
                 printf("ID gerado para a caixa: %d\n", caixa.id);
                 do {
                     printf("Digite o peso da caixa (3, 5 ou 7 toneladas): ");
-                    if (scanf("%d", &caixa.peso) != 1 || !validarInteiro(caixa.peso)) {
+                    if (scanf("%d", &caixa.peso) != 1 || caixa.peso != 3 || caixa.peso != 5 || caixa.peso != 7 ) {
                         printf("Peso inválido. Por favor, digite um peso válido.\n");
                         while (getchar() != '\n');
                     }
