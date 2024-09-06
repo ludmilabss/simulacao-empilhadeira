@@ -14,8 +14,9 @@ void menu() {
     printf("1. Inserir nova caixa\n");
     printf("2. Consultar caixa\n");
     printf("3. Remover caixa\n");
-    printf("4. Exibir pilha A\n");
-    printf("5. Sair\n");
+    printf("4. Editar caixa\n"); 
+    printf("5 Exibir pilha A\n");
+    printf("6. Sair\n"); 
     printf("===================================\n");
     printf("Escolha uma opção: ");
 }

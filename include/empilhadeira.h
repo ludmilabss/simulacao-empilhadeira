@@ -6,6 +6,7 @@
 void inserirCaixa();
 void consultarCaixa();
 void removerCaixa();
+void editarCaixa();
 
 #endif
 

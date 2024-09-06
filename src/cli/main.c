@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../include/menu.h"
 #include "../include/empilhadeira.h"
 
@@ -76,6 +77,20 @@ int main() {
                 break;
 
             case 4:
+            printf("===================================\n");
+                printf("           Editar Caixa            \n");
+                printf("===================================\n");
+                do {
+                    printf("Digite o ID da caixa a ser editada: ");
+                    if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
+                        printf("ID inválido. Por favor, digite um ID válido.\n");
+                        while (getchar() != '\n');
+                    }
+                } while (!validarInteiro(id));
+                editarCaixa(&pilhaA, &pilhaB, &pilhaC, id);
+                break;
+                
+            case 5:
                 printf("===================================\n");
                 printf("           Exibir Pilha            \n");
                 printf("===================================\n");
@@ -83,7 +98,7 @@ int main() {
                 printf("\n");
                 break;
 
-            case 5:
+            case 6: 
                 printf("Saindo do sistema...\n");
                 break;
 
@@ -91,7 +106,7 @@ int main() {
                 printf("Opção inválida! Por favor, tente novamente.\n");
                 break;
         }
-    } while (opcao != 5);
+    } while (opcao != 6);  
 
     return 0;
 }
