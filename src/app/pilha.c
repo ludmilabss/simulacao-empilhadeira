@@ -3,20 +3,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-void inicializarPilha(Pilha *pilha) {
-    pilha->topo = -1;
+void inicializarPilha(Pilha* pilha) {
+    pilha->topo = 0;  // Inicializa a pilha vazia
 }
 
 int empilhar(Pilha *pilha, Caixa caixa) {
-    if (pilha->topo < MAX_PILHA - 1) {
-        if (pilha->topo == -1 || pilha->caixas[pilha->topo].peso >= caixa.peso) {
-            pilha->topo++;
-            pilha->caixas[pilha->topo] = caixa;
-            return 1; // Sucesso
-        } else {
-            printf("Erro: Não é possível empilhar uma caixa de menor peso sobre uma de maior peso.\n");
-            return 0; // Falha
-        }
+    if (pilha->topo < MAX_PILHA) {  // Corrigido para topo < MAX_PILHA
+        pilha->caixas[pilha->topo] = caixa;
+        pilha->topo++;
+        return 1; // Sucesso
     } else {
         printf("Erro: Pilha cheia.\n");
         return 0; // Falha
@@ -25,9 +20,9 @@ int empilhar(Pilha *pilha, Caixa caixa) {
 
 Caixa desempilhar(Pilha *pilha) {
     Caixa caixa;
-    if (pilha->topo > -1) {
-        caixa = pilha->caixas[pilha->topo];
+    if (pilha->topo > 0) {  // Corrigido: topo > 0
         pilha->topo--;
+        caixa = pilha->caixas[pilha->topo];
     } else {
         printf("Erro: Pilha vazia.\n");
         caixa.id = -1; // Indica que a pilha está vazia
@@ -35,14 +30,15 @@ Caixa desempilhar(Pilha *pilha) {
     return caixa;
 }
 
-int buscarCaixa(Pilha *pilha, int id) {
-    for (int i = 0; i <= pilha->topo; i++) {
+int buscarCaixa(Pilha* pilha, int id) {
+    for (int i = pilha->topo - 1; i >= 0; i--) {
         if (pilha->caixas[i].id == id) {
-            return i;
+            return i;  // Retorna a posição se encontrar
         }
     }
-    return -1; // Não encontrado
+    return -1;  // Retorna -1 se não encontrar
 }
+
 
 void exibirCaixa(Caixa caixa) {
     printf("ID: %d, Peso: %d, Descrição: %s\n", caixa.id, caixa.peso, caixa.descricao);

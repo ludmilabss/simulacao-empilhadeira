@@ -24,10 +24,8 @@ void exibirPilha(Pilha *pilha) {
     if (pilha->topo == -1) {
         printf("Pilha Vazia\n");
     } else {
-        printf("Pilha\n");
         for (int i = pilha->topo; i >= 0; i--) {
             exibirCaixa(pilha->caixas[i]);
         }
-        printf("=====================\n");
     }
 }
