@@ -30,23 +30,13 @@ Caixa desempilhar(Pilha *pilha) {
     return caixa;
 }
 
-int buscarCaixa(Pilha* pilha, int id) {
-    for (int i = pilha->topo - 1; i >= 0; i--) {
-        if (pilha->caixas[i].id == id) {
-            return i;  // Retorna a posição se encontrar
+void exibirPilha(Pilha *pilha) {
+    if (pilha->topo == 0) {
+        printf("Pilha Vazia\n");
+    } else {
+        for (int i = pilha->topo - 1; i >= 0; i--) {
+            exibirCaixa(pilha->caixas[i]);
         }
     }
-    return -1;  // Retorna -1 se não encontrar
 }
 
-
-void exibirCaixa(Caixa caixa) {
-    printf("ID: %d, Peso: %d, Descrição: %s\n", caixa.id, caixa.peso, caixa.descricao);
-}
-
-void moverCaixa(Pilha *origem, Pilha *destino) {
-    Caixa caixa = desempilhar(origem);
-    if (caixa.id != -1) {
-        empilhar(destino, caixa);
-    }
-}

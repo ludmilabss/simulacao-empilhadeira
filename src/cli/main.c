@@ -29,7 +29,7 @@ int main() {
                 caixa.id = rand() % 1000 + 1;  // Gera ID aleatório entre 1 e 1000
                 printf("ID gerado para a caixa: %d\n", caixa.id);
                 do {
-                    printf("Digite o peso da caixa (em toneladas): ");
+                    printf("Digite o peso da caixa (3, 5 ou 7 toneladas): ");
                     if (scanf("%d", &caixa.peso) != 1 || !validarInteiro(caixa.peso)) {
                         printf("Peso inválido. Por favor, digite um peso válido.\n");
                         while (getchar() != '\n');
@@ -54,9 +54,10 @@ int main() {
                         while (getchar() != '\n');  // Limpa o buffer de entrada
                     }
                 } while (!validarInteiro(id));
-
+                limparTela();
                 // Verifica nas três pilhas
                 consultarCaixa(&pilhaA, &pilhaB, &pilhaC, id);
+                printf("\n");
                 break;
 
 
@@ -72,8 +73,7 @@ int main() {
                     }
                 } while (!validarInteiro(id));
                 removerCaixa(&pilhaA, &pilhaB, &pilhaC, id);
-                limparTela();
-                printf("\nCaixa removida com sucesso!\n");
+                printf("\nCaixa removida com sucesso!\n\n");
                 break;
 
             case 4:
@@ -81,6 +81,7 @@ int main() {
                 printf("           Exibir Pilha            \n");
                 printf("===================================\n");
                 exibirPilha(&pilhaA);
+                printf("\n");
                 break;
 
             case 5:

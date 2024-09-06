@@ -8,24 +8,14 @@ void limparTela() {
 }
 
 void menu() {
-    printf("=====================\n");
-    printf("  Menu de Operações  \n");
-    printf("=====================\n");
-    printf("1. Inserir Caixa\n");
-    printf("2. Consultar Caixa\n");
-    printf("3. Remover Caixa\n");
-    printf("4. Exibir Pilha\n");
+    printf("===================================\n");
+    printf("   Gerenciamento de Empilhadeira   \n");
+    printf("===================================\n");
+    printf("1. Inserir nova caixa\n");
+    printf("2. Consultar caixa\n");
+    printf("3. Remover caixa\n");
+    printf("4. Exibir pilha A\n");
     printf("5. Sair\n");
-    printf("=====================\n");
+    printf("===================================\n");
     printf("Escolha uma opção: ");
-}
-
-void exibirPilha(Pilha *pilha) {
-    if (pilha->topo == -1) {
-        printf("Pilha Vazia\n");
-    } else {
-        for (int i = pilha->topo; i >= 0; i--) {
-            exibirCaixa(pilha->caixas[i]);
-        }
-    }
 }
