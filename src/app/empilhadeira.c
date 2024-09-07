@@ -82,8 +82,17 @@ void editarCaixa(Pilha* pilhaA, Pilha* pilhaB, Pilha* pilhaC, int id) {
         caixaEditada.peso = novoPeso;
         strcpy(caixaEditada.descricao, novaDescricao);
 
-        // Remover a caixa antiga
-        removerCaixa(pilhaA, pilhaB, pilhaC, id);
+        // Remover a caixa antiga silenciosamente
+        int pos = buscarCaixa(pilhaA, id);
+        if (pos != -1) {
+            while (pilhaA->topo > pos + 1) {
+                moverCaixa(pilhaA, pilhaB);
+            }
+            desempilhar(pilhaA);
+            while (pilhaB->topo > 0) {
+                moverCaixa(pilhaB, pilhaA);
+            }
+        }
 
         // Reinserir a caixa editada
         inserirCaixa(pilhaA, pilhaB, pilhaC, caixaEditada);
