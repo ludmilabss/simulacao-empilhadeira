@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../include/menu.h"
 #include "../include/empilhadeira.h"
 
@@ -28,13 +29,13 @@ int main() {
                 printf("===================================\n");
                 caixa.id = rand() % 1000 + 1;  // Gera ID aleatório entre 1 e 1000
                 printf("ID gerado para a caixa: %d\n", caixa.id);
-                do {
-                    printf("Digite o peso da caixa (3, 5 ou 7 toneladas): ");
-                    if (scanf("%d", &caixa.peso) != 1 || !validarInteiro(caixa.peso)) {
-                        printf("Peso inválido. Por favor, digite um peso válido.\n");
-                        while (getchar() != '\n');
-                    }
-                } while (!validarInteiro(caixa.peso));
+    do {
+        printf("Digite o peso da caixa (3, 5 ou 7 toneladas): ");
+        if (scanf("%d", &caixa.peso) != 1 || (caixa.peso != 3 && caixa.peso != 5 && caixa.peso != 7)) {
+            printf("Peso inválido. Por favor, digite um peso válido.\n");
+            while (getchar() != '\n');
+        }
+    } while (caixa.peso != 3 && caixa.peso != 5 && caixa.peso != 7);
                 
                 printf("Digite a descrição da caixa: ");
                 scanf(" %[^\n]", caixa.descricao);
@@ -43,19 +44,24 @@ int main() {
                 printf("\nCaixa inserida com sucesso!\n\n");
                 break;
 
-            case 2:
+           case 2:
                 printf("===================================\n");
                 printf("          Consultar Caixa          \n");
                 printf("===================================\n");
                 do {
                     printf("Digite o ID da caixa: ");
-                    if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
+                    if (scanf("%d", &id) != 1) {
+                        while (getchar() != '\n');  // Limpa o buffer de entrada
+                        printf("ID inválido. Por favor, digite um ID válido.\n");
+                        id = -1;  // Define um valor inválido para continuar o loop
+                    } else if (!validarInteiro(id)) {
                         printf("ID inválido. Por favor, digite um ID válido.\n");
                         while (getchar() != '\n');  // Limpa o buffer de entrada
+                    } else {
+                        break;  // Sai do loop se a entrada for válida
                     }
-                } while (!validarInteiro(id));
+                } while (1);
                 limparTela();
-                // Verifica nas três pilhas
                 consultarCaixa(&pilhaA, &pilhaB, &pilhaC, id);
                 printf("\n");
                 break;
@@ -73,10 +79,23 @@ int main() {
                     }
                 } while (!validarInteiro(id));
                 removerCaixa(&pilhaA, &pilhaB, &pilhaC, id);
-                printf("\nCaixa removida com sucesso!\n\n");
                 break;
 
             case 4:
+                printf("===================================\n");
+                printf("           Editar Caixa            \n");
+                printf("===================================\n");
+                do {
+                    printf("Digite o ID da caixa: ");
+                    if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
+                        printf("ID inválido. Por favor, digite um ID válido.\n");
+                        while (getchar() != '\n');
+                    }
+                } while (!validarInteiro(id));
+                editarCaixa(&pilhaA, &pilhaB, &pilhaC, id);
+                break;
+                
+            case 5:
                 printf("===================================\n");
                 printf("           Exibir Pilha            \n");
                 printf("===================================\n");
@@ -84,7 +103,7 @@ int main() {
                 printf("\n");
                 break;
 
-            case 5:
+            case 6: 
                 printf("Saindo do sistema...\n");
                 break;
 
@@ -92,7 +111,7 @@ int main() {
                 printf("Opção inválida! Por favor, tente novamente.\n");
                 break;
         }
-    } while (opcao != 5);
+    } while (opcao != 6);  
 
     return 0;
 }

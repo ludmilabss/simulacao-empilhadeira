@@ -6,13 +6,14 @@ Professora: Cledja Rolim
 </h3>
 
 <p align="justify">
-  Este projeto é um sistema desenvolvido na linguagem C para gerenciar o armazenamento de caixas em um depósito utilizando pilhas. O sistema permite inserir, consultar e remover caixas de diferentes pesos, garantindo que caixas mais pesadas nunca sejam empilhadas sobre caixas mais leves
+  Este projeto é um sistema desenvolvido na linguagem C para gerenciar o armazenamento de caixas em um depósito utilizando pilhas. O sistema permite inserir, consultar, editar e remover caixas de diferentes pesos, garantindo que caixas mais pesadas nunca sejam empilhadas sobre caixas mais leves
 </p>
 
 ## Funcionalidades Principais
 
 - **Inserção de Caixas:** Permite inserir caixas com identificação, peso e descrição, organizando-as nas pilhas de forma que caixas mais pesadas não fiquem sobre as mais leves.
 - **Consulta de Caixas:** Permite consultar a existência e os detalhes de uma caixa específica no depósito.
+- **Edição de Caixas:** Permite editar a descrição de uma caixa específica no depósito.
 - **Remoção de Caixas:** Permite remover uma caixa específica da pilha principal, reorganizando as outras caixas conforme necessário.
 - **Movimentação entre Pilhas:** As caixas podem ser movidas entre as pilhas para garantir que as regras de empilhamento sejam seguidas.
 
@@ -24,7 +25,17 @@ Professora: Cledja Rolim
 
 ### Diretórios e sub-diretórios
 
+- **`include`**: Diretório que contém arquivos de cabeçalho para uso em outros arquivos-fonte;
+- **`src`**: Diretório que contém os arquivos-fonte do projeto;
+- **`cli`**: Sub-diretório que contém arquivos com a interface de linha de comando da aplicação. Incluindo comandos que o usuário pode executar pelo terminal ou console e que controlará a aplicação;
+- **`services`**: Sub-diretório que contém arquivos com a lógica do sistema e as principais funcionalidades, essa camada vai interagir com todas as outras.
+
 ### Principais arquivos do projeto
+
+- **`main.c`**: Arquivo principal do projeto, responsável por iniciar a aplicação;
+- **`empilhadeira.c`**: Contém as funções principais para inserir, consultar, editar e remover caixas nas pilhas;
+- **`pilha.c`**: Implementa a estrutura de dados das pilhas;
+- **`menu.c.c`**: Implementa o menu interativo para o usuário.
 
 ## Estrutura de Dados
 
@@ -44,7 +55,9 @@ No projeto, foi utilizada principalmente a estruturas de dados: **pilhas**.
 
 3. **`removerCaixa`**: Permite que o usuário remova uma caixa específica da pilha principal, reorganizando as outras caixas conforme necessário;
 
-4. **`exibirPilha`**: Mostra todas as caixas atualmente empilhadas na pilha principal;
+4. **`editarCaixa`**: Permite que o usuário edite a descrição de uma caixa específica.
+
+5. **`exibirPilha`**: Mostra todas as caixas atualmente empilhadas na pilha principal;
 
 5. **`sair`**: Finaliza o programa.
 

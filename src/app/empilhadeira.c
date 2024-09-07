@@ -1,4 +1,5 @@
 #include "empilhadeira.h"
+#include <string.h> 
 #include <stdio.h>
 
 void inserirCaixa(Pilha* pilhaA, Pilha* pilhaB, Pilha* pilhaC, Caixa caixa) {
@@ -46,11 +47,57 @@ void removerCaixa(Pilha *pilhaA, Pilha *pilhaB, Pilha *pilhaC, int id) {
         Caixa caixaRemovida = desempilhar(pilhaA);
         printf("\n");
         exibirCaixa(caixaRemovida);
+        printf("\nCaixa removida com sucesso!\n\n");
 
         // Mover as caixas da pilha B de volta para a pilha A
         while (pilhaB->topo > 0) {
             moverCaixa(pilhaB, pilhaA);
         }
+    } else {
+        printf("Caixa não encontrada.\n");
+    }
+}
+
+void editarCaixa(Pilha* pilhaA, Pilha* pilhaB, Pilha* pilhaC, int id) {
+    int pos = buscarCaixa(pilhaA, id);
+    if (pos != -1) {
+        Caixa caixaEditada = pilhaA->caixas[pos];
+        int novoPeso;
+        char novaDescricao[100];
+
+        // Solicitar novo peso
+        do {
+            printf("Digite o novo peso da caixa (3, 5 ou 7 toneladas): ");
+            if (scanf("%d", &novoPeso) != 1 || (novoPeso != 3 && novoPeso != 5 && novoPeso != 7)) {
+                printf("Peso inválido. Por favor, digite um peso válido.\n");
+                while (getchar() != '\n');
+            }
+        } while (novoPeso != 3 && novoPeso != 5 && novoPeso != 7);
+
+        // Solicitar nova descrição
+        printf("Digite a nova descrição da caixa: ");
+        scanf(" %[^\n]", novaDescricao);
+
+        // Atualizar a caixa
+        caixaEditada.peso = novoPeso;
+        strcpy(caixaEditada.descricao, novaDescricao);
+
+        // Remover a caixa antiga silenciosamente
+        int pos = buscarCaixa(pilhaA, id);
+        if (pos != -1) {
+            while (pilhaA->topo > pos + 1) {
+                moverCaixa(pilhaA, pilhaB);
+            }
+            desempilhar(pilhaA);
+            while (pilhaB->topo > 0) {
+                moverCaixa(pilhaB, pilhaA);
+            }
+        }
+
+        // Reinserir a caixa editada
+        inserirCaixa(pilhaA, pilhaB, pilhaC, caixaEditada);
+
+        printf("\nCaixa editada com sucesso!\n\n");
     } else {
         printf("Caixa não encontrada.\n");
     }
