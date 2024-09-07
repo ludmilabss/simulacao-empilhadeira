@@ -82,11 +82,11 @@ int main() {
                 break;
 
             case 4:
-            printf("===================================\n");
+                printf("===================================\n");
                 printf("           Editar Caixa            \n");
                 printf("===================================\n");
                 do {
-                    printf("Digite o ID da caixa a ser editada: ");
+                    printf("Digite o ID da caixa: ");
                     if (scanf("%d", &id) != 1 || !validarInteiro(id)) {
                         printf("ID inválido. Por favor, digite um ID válido.\n");
                         while (getchar() != '\n');
